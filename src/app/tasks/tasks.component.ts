@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
-import { User } from '../user/user.component';
+import { Component, computed, input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
+import { type User } from '../user/user.model';
+import { type Task } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -11,4 +12,18 @@ import { TaskComponent } from './task/task.component';
 })
 export class TasksComponent {
   user = input.required<User>();
+  userId = computed(() => this.user().id);
+  tasks: Task[] = [
+    {
+      id: 't1',
+      uid: 'u1',
+      title: 'Master Angular',
+      summary: 'Learn all the basic advanced',
+      dueDate: '2024-08-01',
+    },
+  ];
+
+  public get selectedUserTasks() {
+    return this.tasks.filter((task) => task.uid === this.userId());
+  }
 }
