@@ -26,4 +26,8 @@ export class TasksComponent {
   public get selectedUserTasks() {
     return this.tasks.filter((task) => task.uid === this.userId());
   }
+
+  onTaskCompleted(completedTask: Task) {
+    this.tasks = this.tasks.filter((task) => task.id !== completedTask.id);
+  }
 }
