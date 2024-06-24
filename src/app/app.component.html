@@ -2,8 +2,11 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user></app-user>
+    <li *ngFor="let user of users">
+      <app-user
+        [user]="user"
+        (onUserClicked)="onUserClicked($event)"
+      ></app-user>
     </li>
   </ul>
 </main>

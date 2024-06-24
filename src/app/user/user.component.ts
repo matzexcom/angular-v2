@@ -1,5 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-users';
+import { Component, EventEmitter, Input, output, Output } from '@angular/core';
 
 export interface User {
   id: string;
@@ -15,21 +14,20 @@ export interface User {
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  public selectedUser = signal(
-    DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)],
-  );
-  public imagePath = computed(
-    () => `assets/users/${this.selectedUser().avatar}`,
-  );
+  @Input({ required: true }) user!: User;
+  // Angular signals approach
+  // public user = input.required<User>();
+  // public imagePath = computed(() => `assets/users/${this.user().avatar}`)
 
-  // public get imagePath() {
-  //   return `assets/users/${this.selectedUser.avatar}`;
-  // }
+  @Output() onUserClicked = new EventEmitter<User>();
+  // Angular signals approach
+  // select = output<User>();
+
+  public get imagePath() {
+    return `assets/users/${this.user.avatar}`;
+  }
 
   public onSelectUser() {
-    console.log('clicked user');
-    this.selectedUser.set(
-      DUMMY_USERS[Math.floor(Math.random() * DUMMY_USERS.length)],
-    );
+    this.onUserClicked.emit(this.user);
   }
 }
