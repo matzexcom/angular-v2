@@ -4,6 +4,10 @@ import { User, UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
 import { TasksComponent } from './tasks/tasks.component';
 
+import '@fontsource/poppins'; // Defaults to weight 400
+import '@fontsource/poppins/400.css'; // Specify weight
+import '@fontsource/poppins/400-italic.css'; // Specify weight and style
+
 const COMPONENTS = [HeaderComponent, UserComponent, TasksComponent];
 
 @Component({
