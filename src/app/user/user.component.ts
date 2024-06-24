@@ -10,6 +10,7 @@ import { type User } from './user.model';
 })
 export class UserComponent {
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected!: boolean;
   // Angular signals approach
   // public user = input.required<User>();
   // public imagePath = computed(() => `assets/users/${this.user().avatar}`)

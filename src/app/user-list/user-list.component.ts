@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { User, UserComponent } from '../user/user.component';
+import { UserComponent } from '../user/user.component';
 import { DUMMY_USERS } from '../dummy-users';
+import { type User } from '../user/user.model';
 
 @Component({
   selector: 'app-user-list',
