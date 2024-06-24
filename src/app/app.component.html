@@ -2,11 +2,16 @@
 
 <main>
   <ul id="users">
-    <li *ngFor="let user of users">
-      <app-user
-        [user]="user"
-        (onUserClicked)="onUserClicked($event)"
-      ></app-user>
-    </li>
+    @for (user of users; track user.id) {
+      <li>
+        <app-user
+          [user]="user"
+          (onUserClicked)="onUserClicked($event)"
+        ></app-user>
+      </li>
+    }
   </ul>
+  @if (selectedUser) {
+    <app-tasks [user]="selectedUser"></app-tasks>
+  }
 </main>
