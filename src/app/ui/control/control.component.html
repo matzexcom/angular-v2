@@ -1,8 +1,19 @@
 <p>
   <label [for]="id()">{{ label() }}</label>
   @if (type() === "textarea") {
-    <textarea [id]="id()" [name]="id()"></textarea>
+    <textarea
+      [id]="id()"
+      [name]="id()"
+      (input)="onChange($event)"
+      [value]="value()"
+    ></textarea>
   } @else {
-    <input [id]="id()" [name]="id()" [type]="type()" />
+    <input
+      [id]="id()"
+      [name]="id()"
+      [type]="type()"
+      (input)="onChange($event)"
+      [value]="value()"
+    />
   }
 </p>
