@@ -2,7 +2,7 @@
   <header>
     <h2>{{ user().name }}'s Tasks</h2>
     <menu>
-      <button>Add Task</button>
+      <button (click)="onAddTaskClicked()">Add Task</button>
     </menu>
   </header>
 
@@ -15,3 +15,10 @@
     }
   </ul>
 </section>
+
+@if (showAddForm) {
+  <app-add-task
+    (onClosed)="showAddForm = false"
+    (newTaskSubmitted)="addTask($event)"
+  ></app-add-task>
+}
