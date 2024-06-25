@@ -1,6 +1,11 @@
-<form>
-  <app-control id="title" label="Titel"></app-control>
-  <app-control id="request" label="Request" type="textarea"></app-control>
+<form (ngSubmit)="onSubmit()" #form>
+  <app-control [(value)]="title" id="title" label="Titel"></app-control>
+  <app-control
+    [(value)]="request"
+    id="request"
+    label="Request"
+    type="textarea"
+  ></app-control>
 
   <p>
     <button custom type="submit">
